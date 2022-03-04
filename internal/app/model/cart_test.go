@@ -7,13 +7,6 @@ import (
 	"testing"
 )
 
-func TestNewCart_ShouldReturnNewCart(t *testing.T) {
-	expected := &model.Cart{}
-	actual := model.NewCart()
-
-	assert.Equal(t, expected, actual)
-}
-
 func TestAddCart_ShouldAddNewProductToCart(t *testing.T) {
 	product := model.NewProduct("IPad")
 	item := model.NewItem(product, 2)
@@ -23,7 +16,7 @@ func TestAddCart_ShouldAddNewProductToCart(t *testing.T) {
 	cart := model.NewCart()
 	cart.Add(item)
 
-	assert.Equal(t, expected, cart)
+	assert.ElementsMatch(t, expected.Items, cart.Items)
 }
 
 func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing.T) {
@@ -46,7 +39,8 @@ func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing
 
 	cart.Remove(item2)
 
-	assert.Equal(t, expected, cart)
+	assert.ElementsMatch(t, expected.Items, cart.Items)
+	assert.ElementsMatch(t, expected.DomainEvents, cart.DomainEvents)
 }
 
 func TestIsEqualTo_ShouldReturnFalseForDifferentCarts(t *testing.T) {

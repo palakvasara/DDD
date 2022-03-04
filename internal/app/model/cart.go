@@ -1,14 +1,21 @@
 package model
 
-import "fmt"
+import (
+	"fmt"
+	gonanoid "github.com/matoous/go-nanoid/v2"
+)
 
 type Cart struct {
-	Items []Item
+	Id           string
+	Items        []Item
 	DomainEvents []string
 }
 
 func NewCart() *Cart {
-	return &Cart{}
+	id, _ := gonanoid.New()
+	return &Cart{
+		Id: id,
+	}
 }
 
 func (c *Cart) Add(item Item) {
@@ -22,17 +29,14 @@ func (c *Cart) Remove(item Item) {
 			continue
 		}
 
-		c.Items = append(c.Items[0: idx], c.Items[idx+1: len(c.Items)]...)
+		c.Items = append(c.Items[0:idx], c.Items[idx+1:len(c.Items)]...)
 
 		c.apply(i, "removed")
 	}
 }
 
 func (c *Cart) IsEqualTo(anotherC *Cart) bool {
-	if c == anotherC {
-		return true
-	}
-	return false
+	return c.Id == anotherC.Id
 }
 
 func (c *Cart) apply(item Item, action string) {
