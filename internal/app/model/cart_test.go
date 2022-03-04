@@ -48,3 +48,26 @@ func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing
 
 	assert.Equal(t, expected, cart)
 }
+
+func TestIsEqualTo_ShouldReturnFalseForDifferentCarts(t *testing.T) {
+	product := model.NewProduct("IPad")
+	item := model.NewItem(product, 2)
+
+	cart1 := model.NewCart()
+	cart2 := model.NewCart()
+
+	cart1.Add(item)
+	cart2.Add(item)
+
+	assert.False(t, cart1.IsEqualTo(cart2))
+}
+
+func TestIsEqualTo_ShouldReturnTrueForSameCarts(t *testing.T) {
+	product := model.NewProduct("IPad")
+	item := model.NewItem(product, 2)
+
+	cart1 := model.NewCart()
+	cart1.Add(item)
+
+	assert.True(t, cart1.IsEqualTo(cart1))
+}

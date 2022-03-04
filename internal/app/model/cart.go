@@ -28,6 +28,13 @@ func (c *Cart) Remove(item Item) {
 	}
 }
 
+func (c *Cart) IsEqualTo(anotherC *Cart) bool {
+	if c == anotherC {
+		return true
+	}
+	return false
+}
+
 func (c *Cart) apply(item Item, action string) {
 	c.DomainEvents = append(c.DomainEvents, fmt.Sprintf("%s was %s", item.GetProductName(), action))
 }
