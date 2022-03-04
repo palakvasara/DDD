@@ -8,8 +8,12 @@ import (
 
 func TestNewProduct_ShouldReturnNewProduct(t *testing.T) {
 	name := "pen"
-	expected := model.Product{Name: name}
-	actual := model.NewProduct(name)
+	price := &model.Price{
+		Currency: "INR",
+		Value:    10.1,
+	}
+	expected := model.Product{Name: name, Price: price}
+	actual := model.NewProduct(name, price)
 
 	assert.Equal(t, expected, actual)
 }

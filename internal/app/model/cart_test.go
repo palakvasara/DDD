@@ -8,7 +8,7 @@ import (
 )
 
 func TestAddCart_ShouldAddNewProductToCart(t *testing.T) {
-	product := model.NewProduct("IPad")
+	product := model.NewProduct("IPad", model.NewPrice("INR", 60000))
 	item := model.NewItem(product, 2)
 
 	expected := &model.Cart{Items: []model.Item{item}}
@@ -20,8 +20,8 @@ func TestAddCart_ShouldAddNewProductToCart(t *testing.T) {
 }
 
 func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing.T) {
-	product1 := model.NewProduct("IPad")
-	product2 := model.NewProduct("Pen")
+	product1 := model.NewProduct("IPad", model.NewPrice("INR", 60000))
+	product2 := model.NewProduct("Pen", model.NewPrice("INR", 10))
 	item1 := model.NewItem(product1, 2)
 	item2 := model.NewItem(product2, 1)
 
@@ -44,7 +44,7 @@ func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing
 }
 
 func TestIsEqualTo_ShouldReturnFalseForDifferentCarts(t *testing.T) {
-	product := model.NewProduct("IPad")
+	product := model.NewProduct("IPad", model.NewPrice("INR", 60000))
 	item := model.NewItem(product, 2)
 
 	cart1 := model.NewCart()
@@ -57,7 +57,7 @@ func TestIsEqualTo_ShouldReturnFalseForDifferentCarts(t *testing.T) {
 }
 
 func TestIsEqualTo_ShouldReturnTrueForSameCarts(t *testing.T) {
-	product := model.NewProduct("IPad")
+	product := model.NewProduct("IPad", model.NewPrice("INR", 60000))
 	item := model.NewItem(product, 2)
 
 	cart1 := model.NewCart()
