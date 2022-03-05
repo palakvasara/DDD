@@ -1,13 +1,27 @@
 package domain
 
 type Product struct {
-	Name string
-	Price *Price
+	name          string
+	price         *Price
+	weightInGrams int
 }
 
-func NewProduct(name string, price *Price) Product {
+func (p *Product) GetPrice() *Price {
+	return p.price
+}
+
+func (p *Product) GetProductName() string {
+	return p.name
+}
+
+func (p *Product) GetWeightInGrams() int {
+	return p.weightInGrams
+}
+
+func NewProduct(name string, price *Price, weightInGrams int) Product {
 	return Product{
-		Name: name,
-		Price: price,
+		name:          name,
+		price:         price,
+		weightInGrams: weightInGrams,
 	}
 }

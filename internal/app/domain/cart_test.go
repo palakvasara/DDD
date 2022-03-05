@@ -8,7 +8,7 @@ import (
 )
 
 func TestAddCart_ShouldAddNewProductToCart(t *testing.T) {
-	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000))
+	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000), 1500)
 	item := domain.NewItem(product, 2)
 
 	expected := &domain.Cart{Items: []domain.Item{item}}
@@ -20,8 +20,8 @@ func TestAddCart_ShouldAddNewProductToCart(t *testing.T) {
 }
 
 func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing.T) {
-	product1 := domain.NewProduct("IPad", domain.NewPrice("INR", 60000))
-	product2 := domain.NewProduct("Pen", domain.NewPrice("INR", 10))
+	product1 := domain.NewProduct("IPad", domain.NewPrice("INR", 60000), 1500)
+	product2 := domain.NewProduct("Pen", domain.NewPrice("INR", 10), 10)
 	item1 := domain.NewItem(product1, 2)
 	item2 := domain.NewItem(product2, 1)
 
@@ -44,7 +44,7 @@ func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing
 }
 
 func TestIsEqualTo_ShouldReturnFalseForDifferentCarts(t *testing.T) {
-	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000))
+	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000), 1500)
 	item := domain.NewItem(product, 2)
 
 	cart1 := domain.NewCart()
@@ -57,7 +57,7 @@ func TestIsEqualTo_ShouldReturnFalseForDifferentCarts(t *testing.T) {
 }
 
 func TestIsEqualTo_ShouldReturnTrueForSameCarts(t *testing.T) {
-	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000))
+	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000), 1500)
 	item := domain.NewItem(product, 2)
 
 	cart1 := domain.NewCart()

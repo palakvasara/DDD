@@ -13,8 +13,8 @@ func TestNewProduct_ShouldReturnNewProduct(t *testing.T) {
 	value := 20.1
 	price := domain.NewPrice(currency, value)
 
-	expected := domain.Product{Name: name, Price:price}
-	actual := domain.NewProduct(name, price)
+	expected := domain.NewProduct(name, price, 10)
+	actual := domain.NewProduct(name, price, 10)
 
 	assert.Equal(t, expected, actual)
 
@@ -31,8 +31,8 @@ func TestNewProduct_ShouldReturnDiscountedPriceIfProductPresent(t *testing.T) {
 	cbp.AddNewProductToCompetitorsList(name, *price)
 	discountedPrice := cbp.GetDiscountedPrice(name)
 
-	expected := domain.Product{Name: name, Price: &discountedPrice}
-	actual := domain.NewProduct(name, &discountedPrice)
+	expected := domain.NewProduct(name, &discountedPrice, 10)
+	actual := domain.NewProduct(name, &discountedPrice, 10)
 
 	assert.Equal(t, expected, actual)
 }

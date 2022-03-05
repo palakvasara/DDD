@@ -13,5 +13,5 @@ func NewItem(product Product, qty int) Item {
 }
 
 func (i Item) GetProductName() string {
-	return i.Product.Name
+	return i.Product.GetProductName()
 }

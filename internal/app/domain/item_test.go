@@ -7,7 +7,7 @@ import (
 )
 
 func TestNewItem_ShouldReturnNewItem(t *testing.T) {
-	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000))
+	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000), 1500)
 	expected := domain.Item{Product: product, Qty: 1}
 	actual := domain.NewItem(product, 1)
 
