@@ -8,10 +8,10 @@ import (
 
 func TestNewProduct_ShouldReturnNewProduct(t *testing.T) {
 	name := "pen"
-	price := &model.Price{
-		Currency: "INR",
-		Value:    10.1,
-	}
+	currency := "INR"
+	value := 20.1
+	price := model.NewPrice(currency, value)
+
 	expected := model.Product{Name: name, Price: price}
 	actual := model.NewProduct(name, price)
 

@@ -7,12 +7,11 @@ import (
 )
 
 func TestAddCart_ShouldReturnNewPrice(t *testing.T) {
-	expected := &model.Price{
-		Currency: "INR",
-		Value:    20.1,
-	}
+	currency := "INR"
+	value := 20.1
 
-	actual := model.NewPrice("INR", 20.1)
+	actual := model.NewPrice(currency, value)
 
-	assert.Equal(t, expected, actual)
+	assert.Equal(t, currency, actual.GetCurrency())
+	assert.Equal(t, value, actual.GetValue())
 }
