@@ -6,15 +6,15 @@ import (
 )
 
 type Cart struct {
-	Id           string
-	Items        []Item
+	id    string
+	Items []Item
 	DomainEvents []string
 }
 
 func NewCart() *Cart {
 	id, _ := gonanoid.New()
 	return &Cart{
-		Id: id,
+		id: id,
 	}
 }
 
@@ -36,7 +36,7 @@ func (c *Cart) Remove(item Item) {
 }
 
 func (c *Cart) IsEqualTo(anotherC *Cart) bool {
-	return c.Id == anotherC.Id
+	return c.id == anotherC.id
 }
 
 func (c *Cart) apply(item Item, action string) {
