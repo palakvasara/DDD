@@ -1,29 +1,29 @@
-package model_test
+package domain_test
 
 import (
 	"fmt"
-	"github.com/hiteshpattanayak-tw/DDD/internal/app/model"
+	"github.com/hiteshpattanayak-tw/DDD/internal/app/domain"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestAddCart_ShouldAddNewProductToCart(t *testing.T) {
-	product := model.NewProduct("IPad", model.NewPrice("INR", 60000))
-	item := model.NewItem(product, 2)
+	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000))
+	item := domain.NewItem(product, 2)
 
-	expected := &model.Cart{Items: []model.Item{item}}
+	expected := &domain.Cart{Items: []domain.Item{item}}
 
-	cart := model.NewCart()
+	cart := domain.NewCart()
 	cart.Add(item)
 
 	assert.ElementsMatch(t, expected.Items, cart.Items)
 }
 
 func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing.T) {
-	product1 := model.NewProduct("IPad", model.NewPrice("INR", 60000))
-	product2 := model.NewProduct("Pen", model.NewPrice("INR", 10))
-	item1 := model.NewItem(product1, 2)
-	item2 := model.NewItem(product2, 1)
+	product1 := domain.NewProduct("IPad", domain.NewPrice("INR", 60000))
+	product2 := domain.NewProduct("Pen", domain.NewPrice("INR", 10))
+	item1 := domain.NewItem(product1, 2)
+	item2 := domain.NewItem(product2, 1)
 
 	domainEvents := []string {
 		fmt.Sprintf("%s was added", item1.GetProductName()),
@@ -31,9 +31,9 @@ func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing
 		fmt.Sprintf("%s was removed", item2.GetProductName()),
 	}
 
-	expected := &model.Cart{Items: []model.Item{item1}, DomainEvents: domainEvents}
+	expected := &domain.Cart{Items: []domain.Item{item1}, DomainEvents: domainEvents}
 
-	cart := model.NewCart()
+	cart := domain.NewCart()
 	cart.Add(item1)
 	cart.Add(item2)
 
@@ -44,11 +44,11 @@ func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing
 }
 
 func TestIsEqualTo_ShouldReturnFalseForDifferentCarts(t *testing.T) {
-	product := model.NewProduct("IPad", model.NewPrice("INR", 60000))
-	item := model.NewItem(product, 2)
+	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000))
+	item := domain.NewItem(product, 2)
 
-	cart1 := model.NewCart()
-	cart2 := model.NewCart()
+	cart1 := domain.NewCart()
+	cart2 := domain.NewCart()
 
 	cart1.Add(item)
 	cart2.Add(item)
@@ -57,10 +57,10 @@ func TestIsEqualTo_ShouldReturnFalseForDifferentCarts(t *testing.T) {
 }
 
 func TestIsEqualTo_ShouldReturnTrueForSameCarts(t *testing.T) {
-	product := model.NewProduct("IPad", model.NewPrice("INR", 60000))
-	item := model.NewItem(product, 2)
+	product := domain.NewProduct("IPad", domain.NewPrice("INR", 60000))
+	item := domain.NewItem(product, 2)
 
-	cart1 := model.NewCart()
+	cart1 := domain.NewCart()
 	cart1.Add(item)
 
 	assert.True(t, cart1.IsEqualTo(cart1))

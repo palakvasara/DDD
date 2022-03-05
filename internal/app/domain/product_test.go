@@ -1,8 +1,8 @@
-package model_test
+package domain_test
 
 import (
-	"github.com/hiteshpattanayak-tw/DDD/internal/app/model"
-	"github.com/hiteshpattanayak-tw/DDD/internal/app/model/domain_service"
+	"github.com/hiteshpattanayak-tw/DDD/internal/app/domain"
+	"github.com/hiteshpattanayak-tw/DDD/internal/app/domain/domain_service"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -11,13 +11,13 @@ func TestNewProduct_ShouldReturnNewProduct(t *testing.T) {
 	name := "pen"
 	currency := "INR"
 	value := 20.1
-	price := model.NewPrice(currency, value)
+	price := domain.NewPrice(currency, value)
 
 	domain_service.AddNewProductToCompetitorsList(name, *price)
 	discountedPrice := domain_service.GetDiscountedPrice(name)
 
-	expected := model.Product{Name: name, Price: &discountedPrice}
-	actual := model.NewProduct(name, &discountedPrice)
+	expected := domain.Product{Name: name, Price: &discountedPrice}
+	actual := domain.NewProduct(name, &discountedPrice)
 
 	assert.Equal(t, expected, actual)
 }
