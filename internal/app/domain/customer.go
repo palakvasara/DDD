@@ -5,11 +5,15 @@ type Customer struct {
 	accounts []*Account
 }
 
-func NewCustomer(address *Address, accounts []*Account) *Customer {
+func NewCustomer(address *Address) *Customer {
 	return &Customer{
 		address:  address,
-		accounts: accounts,
+		accounts: make([]*Account, 0),
 	}
+}
+
+func (c *Customer) AddAccount(account *Account) {
+	c.accounts = append(c.accounts, account)
 }
 
 func (c *Customer) UpdateAddresses(address *Address) {
