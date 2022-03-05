@@ -12,7 +12,7 @@ func NewAccount(address *Address) *Account {
 	return &Account{id: id, address: address}
 }
 
-func (a *Account) UpdateAddresses(address *Address) {
+func (a *Account) UpdateAddress(address *Address) {
 	a.address = address
 }
 

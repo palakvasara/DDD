@@ -21,6 +21,9 @@ func TestCustomer_ShouldUpdateAddress(t *testing.T) {
 	newAddress := domain.NewAddress(cityName)
 	customer.UpdateAddresses(newAddress)
 
+	account1.UpdateAddress(newAddress)
+	account2.UpdateAddress(newAddress)
+
 	assert.Equal(t, newAddress, customer.GetAddress())
 	assert.Equal(t, newAddress, account1.GetAddress())
 	assert.Equal(t, newAddress, account2.GetAddress())
