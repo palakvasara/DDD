@@ -2,8 +2,6 @@ package domain_service
 
 import "github.com/hiteshpattanayak-tw/DDD/internal/app/domain"
 
-const weightFactor = 0.01
-
 type OrderService struct{}
 
 func NewOrderService() CheckoutService {
@@ -20,8 +18,7 @@ func (o OrderService) CalculateTotalCost(cart *domain.Cart) float64 {
 	products := o.getFlattenedProducts(cart)
 	cost := float64(0)
 	for _, p := range products {
-		cost += p.GetPrice().GetValue()
-		cost += float64(p.GetWeightInGrams()) * weightFactor
+		cost += p.GetCost()
 	}
 	return cost
 }

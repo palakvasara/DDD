@@ -6,8 +6,8 @@ import (
 )
 
 type Cart struct {
-	id    string
-	Items []Item
+	id           string
+	Items        []Item
 	DomainEvents []string
 	isCheckedOut bool
 }
@@ -55,5 +55,3 @@ func (c *Cart) IsCheckedOut() bool {
 func (c *Cart) apply(item Item, action string) {
 	c.DomainEvents = append(c.DomainEvents, fmt.Sprintf("%s was %s", item.GetProductName(), action))
 }
-
-

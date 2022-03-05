@@ -15,7 +15,7 @@ func TestOrderService_Checkout(t *testing.T) {
 	cart.Add(item)
 
 	products := []domain.Product{
-		product,product,
+		product, product,
 	}
 	expected := domain.NewOrder(products)
 

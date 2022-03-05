@@ -18,7 +18,6 @@ func TestNewProduct_ShouldReturnNewProduct(t *testing.T) {
 
 	assert.Equal(t, expected, actual)
 
-
 }
 
 func TestNewProduct_ShouldReturnDiscountedPriceIfProductPresent(t *testing.T) {

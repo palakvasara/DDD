@@ -6,7 +6,7 @@ const discount = 0.1
 
 var CompetitorsProductList map[string]domain.Price
 
-type CompetitorsBasedPricer struct {}
+type CompetitorsBasedPricer struct{}
 
 func NewCompetitorsBasedPricer() CompetitorsBasedPricerService {
 	return &CompetitorsBasedPricer{}
@@ -26,7 +26,7 @@ func (c CompetitorsBasedPricer) GetDiscountedPrice(productName string) domain.Pr
 			continue
 		}
 		val := price.GetValue()
-		price := domain.NewPrice("INR", val * (1- discount))
+		price := domain.NewPrice("INR", val*(1-discount))
 		return *price
 	}
 

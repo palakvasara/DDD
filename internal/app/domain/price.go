@@ -12,7 +12,6 @@ func NewPrice(currency string, value float64) *Price {
 	}
 }
 
-
 func (p *Price) GetCurrency() string {
 	return p.currency
 }

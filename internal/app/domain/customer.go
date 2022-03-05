@@ -1,13 +1,13 @@
 package domain
 
 type Customer struct {
-	address *Address
+	address    *Address
 	accountIds []string
 }
 
 func NewCustomer(address *Address) *Customer {
 	return &Customer{
-		address:  address,
+		address:    address,
 		accountIds: make([]string, 0),
 	}
 }

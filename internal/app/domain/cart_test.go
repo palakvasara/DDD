@@ -25,7 +25,7 @@ func TestRemoveCart_ShouldRemoveProductFromCartAndAddItToRemovedItems(t *testing
 	item1 := domain.NewItem(product1, 2)
 	item2 := domain.NewItem(product2, 1)
 
-	domainEvents := []string {
+	domainEvents := []string{
 		fmt.Sprintf("%s was added", item1.GetProductName()),
 		fmt.Sprintf("%s was added", item2.GetProductName()),
 		fmt.Sprintf("%s was removed", item2.GetProductName()),
