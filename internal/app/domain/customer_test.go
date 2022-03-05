@@ -14,8 +14,8 @@ func TestCustomer_ShouldUpdateAddress(t *testing.T) {
 	account2 := domain.NewAccount(address)
 
 	customer := domain.NewCustomer(address)
-	customer.AddAccount(account1)
-	customer.AddAccount(account2)
+	customer.AddAccount(account1.GetAccountId())
+	customer.AddAccount(account2.GetAccountId())
 
 	cityName = "Mumbai"
 	newAddress := domain.NewAddress(cityName)

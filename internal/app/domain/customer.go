@@ -2,25 +2,22 @@ package domain
 
 type Customer struct {
 	address *Address
-	accounts []*Account
+	accountIds []string
 }
 
 func NewCustomer(address *Address) *Customer {
 	return &Customer{
 		address:  address,
-		accounts: make([]*Account, 0),
+		accountIds: make([]string, 0),
 	}
 }
 
-func (c *Customer) AddAccount(account *Account) {
-	c.accounts = append(c.accounts, account)
+func (c *Customer) AddAccount(accountId string) {
+	c.accountIds = append(c.accountIds, accountId)
 }
 
 func (c *Customer) UpdateAddresses(address *Address) {
 	c.address = address
-	for _, ac := range c.accounts {
-		ac.UpdateAddresses(address)
-	}
 }
 
 func (c *Customer) GetAddress() *Address {
