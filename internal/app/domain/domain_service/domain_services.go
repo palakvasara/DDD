@@ -6,3 +6,7 @@ type CompetitorsBasedPricerService interface {
 	AddNewProductToCompetitorsList(product string, price domain.Price)
 	GetDiscountedPrice(productName string) domain.Price
 }
+
+type CheckoutService interface {
+	Checkout(cart *domain.Cart) *domain.Order
+}

@@ -8,6 +8,10 @@ var CompetitorsProductList map[string]domain.Price
 
 type CompetitorsBasedPricer struct {}
 
+func NewCompetitorsBasedPricer() CompetitorsBasedPricerService {
+	return &CompetitorsBasedPricer{}
+}
+
 func init() {
 	CompetitorsProductList = make(map[string]domain.Price)
 }

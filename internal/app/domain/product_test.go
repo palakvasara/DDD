@@ -27,7 +27,7 @@ func TestNewProduct_ShouldReturnDiscountedPriceIfProductPresent(t *testing.T) {
 	value := 20.1
 	price := domain.NewPrice(currency, value)
 
-	cbp := new(domain_service.CompetitorsBasedPricer)
+	cbp := domain_service.NewCompetitorsBasedPricer()
 	cbp.AddNewProductToCompetitorsList(name, *price)
 	discountedPrice := cbp.GetDiscountedPrice(name)
 

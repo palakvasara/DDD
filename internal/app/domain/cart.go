@@ -9,6 +9,7 @@ type Cart struct {
 	id    string
 	Items []Item
 	DomainEvents []string
+	isCheckedOut bool
 }
 
 func NewCart() *Cart {
@@ -39,6 +40,17 @@ func (c *Cart) IsEqualTo(anotherC *Cart) bool {
 	return c.id == anotherC.id
 }
 
+func (c *Cart) Checkout() {
+	c.Items = make([]Item, 0)
+	c.isCheckedOut = true
+}
+
+func (c *Cart) IsCheckedOut() bool {
+	return c.isCheckedOut
+}
+
 func (c *Cart) apply(item Item, action string) {
 	c.DomainEvents = append(c.DomainEvents, fmt.Sprintf("%s was %s", item.GetProductName(), action))
 }
+
+
