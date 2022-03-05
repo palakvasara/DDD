@@ -41,6 +41,9 @@ func (c *Cart) IsEqualTo(anotherC *Cart) bool {
 }
 
 func (c *Cart) Checkout() {
+	for _, i := range c.Items {
+		c.apply(i, "checked out")
+	}
 	c.Items = make([]Item, 0)
 	c.isCheckedOut = true
 }
